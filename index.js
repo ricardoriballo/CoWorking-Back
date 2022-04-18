@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 })
 
 app.use(cors({
-    origin: ["*"],
+    origin: ["https://co-working-back.vercel.app/api/", "http://localhost:3000", "http://localhost:4200" ],
     credentials: true
 }));
 
