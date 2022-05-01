@@ -5,7 +5,7 @@ const isAuth = async (req, res, next) => {
     try {
         const token = req.headers.authorization;
         if (!token) {
-            return next(setError(404, 'Token not found'))
+            return next(setError(404, 'Token no encontrado, logueate para tener un Token'))
         }
 
         const parsedToken = token.replace('Bearer ', '');
