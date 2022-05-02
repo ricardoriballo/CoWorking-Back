@@ -6,7 +6,6 @@ const { validationPassword, validationEmail } = require('../../utils/validators/
 const userSchema = new mongoose.Schema(
     {
         name: { type: String, trim: true, required: true },
-        emoji: { type: String, trim: true, required: false },
         password: { type: String, trim: true, required: true },
         email: { type: String, trim: true, required: true },
     }
