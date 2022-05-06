@@ -8,9 +8,16 @@ const FareRoutes = require('./src/api/fare/fare.routes');
 const CoworkingRoutes = require('./src/api/coworking/coworking.routes');
 const UserRoutes = require('./src/api/users/users.routes');
 
+
+
 const PORT = process.env.PORT || 8080;
 
 const app = express();
+
+app.use(cors({
+    origin: ["https://co-working-back.vercel.app/api/", "http://localhost:3000", "http://localhost:3001" ],
+    credentials: true
+}));
 
 connect();
 
@@ -24,7 +31,7 @@ app.use((req, res, next) => {
 })
 
 app.use(cors({
-    origin: ["https://co-working-back.vercel.app/api/", "http://localhost:3000", "http://localhost:4200" ],
+    origin: ["https://co-working-back.vercel.app/api/", "http://localhost:3000", "http://localhost:3001" ],
     credentials: true
 }));
 

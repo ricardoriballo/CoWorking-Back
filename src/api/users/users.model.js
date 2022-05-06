@@ -8,6 +8,8 @@ const userSchema = new mongoose.Schema(
         name: { type: String, trim: true, required: true },
         password: { type: String, trim: true, required: true },
         email: { type: String, trim: true, required: true },
+        favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: "coworking", trim: true }],
+        coworking: [{ type: mongoose.Schema.Types.ObjectId, ref: "coworking", trim: true }]
     }
 );
 

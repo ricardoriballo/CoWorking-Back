@@ -42,4 +42,33 @@ const logout = (req, res, next) => {
     }
 }
 
-module.exports = { register, login, logout }
+const getUser = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findById(id).populate('coworking').populate('favorites');
+        res.status(200).json(user);
+    } catch (error) {
+        return next(error)
+    }
+}
+
+const patchUser = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        console.log(id)
+        const user = new User(req.body);
+        user.name = req.body.name;
+        user.email = req.body.email;
+        user.password = req.body.password;
+        user.favorites = req.body.favorites;
+        user.coworking = req.body.coworking;
+        if (req.file) user.img = req.file.path
+        user._id = id;
+        const updateUser = await User.findByIdAndUpdate(id, user);
+        return res.status(200).json(updateUser);
+    } catch (error) {
+        return next(error);
+    }
+}
+
+module.exports = { register, login, logout, getUser, patchUser }
