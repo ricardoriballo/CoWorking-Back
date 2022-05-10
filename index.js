@@ -14,21 +14,22 @@ const PORT = process.env.PORT || 8080;
 
 const app = express();
 
-app.use(cors({
-    origin: [ "*" ],
-    credentials: true
-}));
-
 connect();
 
 configCloudinary();
 
 app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*")
     res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH')
     res.header('Access-Control-Allow-Credentials', true)
     res.header('Access-Control-Allow-Headers', 'Content-Type')
     next()
 })
+
+app.use(cors({
+    origin: [ "*" ],
+    credentials: true
+}));
 
 
 app.use(express.json({ limit: '5mb' }))
