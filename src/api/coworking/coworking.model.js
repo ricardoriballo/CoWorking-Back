@@ -8,7 +8,8 @@ const coworkingSchema = new mongoose.Schema(
         location: { type: String, required: false, trim: true },
         capacity: { type: String, require: true, trim: true },
         category: { type: String, require: true, trim: true },
-        img: { type: String, trim: true, require: false}
+        img: { type: String, trim: true, require: false},
+        reviews: [{ type: String, trim: true, require: false }]
     },
     {
         timestamps: true

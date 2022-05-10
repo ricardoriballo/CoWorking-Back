@@ -51,11 +51,10 @@ const patchOne = async (req, res, next) => {
         coworking.location = req.body.location;
         coworking.capacity = req.body.capacity;
         coworking.category = req.body.category;
+        coworking.reviews = req.body.reviews;
+        console.log(req);
         if (req.file) coworking.img = req.file.path
         coworking._id = id;
-
-       
-
         const updateCoworking = await Coworking.findByIdAndUpdate(id, coworking);
         return res.status(200).json(updateCoworking);
     } catch (error) {
