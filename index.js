@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.use(cors({
-    origin: ["https://co-working-back.vercel.app/api/", "http://localhost:3000", "http://localhost:3001" ],
+    origin: [ "*" ],
     credentials: true
 }));
 
@@ -30,10 +30,6 @@ app.use((req, res, next) => {
     next()
 })
 
-app.use(cors({
-    origin: ["https://co-working-back.vercel.app/api/", "https://coworking-final-project.vercel.app/", "http://localhost:3000", "http://localhost:3001" ],
-    credentials: true
-}));
 
 app.use(express.json({ limit: '5mb' }))
 
