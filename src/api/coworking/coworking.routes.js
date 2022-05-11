@@ -8,7 +8,8 @@ const {
     getOne,
     postOne,
     patchOne,
-    deleteOne
+    deleteOne,
+    postOneReview
 } = require('./coworking.controller');
 
 CoworkingRoutes.get('/', getAll);
